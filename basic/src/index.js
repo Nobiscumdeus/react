@@ -1,27 +1,71 @@
-import React from 'react';
+import { useState } from 'react';
 import ReactDOM from 'react-dom/client';
+/** 
+function MyForm(){
+  const[inputs, setInputs] = useState({});
 
-//const myFirstElement=<h1> Hello React from Chasfat_Project$</h1>
-//const root = ReactDOM.createRoot(document.getElementById('root'));
-//root.render(myFirstElement);
-const myArray=['Apple','Banana','Orange']
-const myList=myArray.map((item) => <p>{item}</p> )
-
-const vehicleOne={
-  brand:'Ford',
-  model:'Mustang',
-  type:'car',
-  year:2021,
-  color:'red',
-  registration:{
-    city:'Houston',
-    state:'Texas',
-    country:'USA'
+  const handleChange=(event) =>{
+    const name=event.target.name;
+    const value=event.target.value;
+    setInputs(values=>({...values, [name]:value}))
   }
+  const handleSubmit=(event)=>{
+    event.preventDefault();
+    alert(inputs);
+  }
+  return(
+    <form onSubmit={handleSubmit}>
+      <label> Enter your name:
+        <input
+        type="text"
+        name="username"
+        value={inputs.username || ""}
+        onChange={handleChange}
+        />
+      </label>
+      <label> Enter your age:
+        <input 
+        type="number"
+        name="age"
+        value={inputs.age || ""}
+        onChange={handleChange}
+        />
+      </label>
+      <input type="submit" />
+    </form>
+  )
 }
-myVehicle(vehicleOne)
-function myVehicle({model,brand,registration:{state}}){
-  const message='My '+ model + 'with the brand name' + brand + 'is registered in ' + state + '.';
-  document.getElementById("demo").innerHTML=message;
+**/
+/** For Text areas in React
+function MyForm(){
+  const[textarea,setTextarea]=useState(
+    "The content of a text area goes in the value attribute"
+  );
+  const handleChange=(event)=>{
+    setTextarea(event.target.value)
+  }
+  return(
+    <form>
+      <textarea value={textarea} onChange={handleChange} />
+    </form>
+
+  )
 }
-ReactDOM.render(myList,document.getElementById('root'));
+**/
+function MyForm(){
+  const[myCar,setMyCar]= useState("Volvo");
+  const handleChange=(event)=>{
+    setMyCar(event.target.value)
+  }
+  return(
+    <form>
+      <select value={myCar} onChange={handleChange}>
+        <option value="Ford">Ford</option>
+        <option value="Volvo">Volvo</option>
+        <option value="Fiat">Fiat</option>
+      </select>
+    </form>
+  )
+}
+const root=ReactDOM.createRoot(document.getElementById("root"))
+root.render(<MyForm />)
